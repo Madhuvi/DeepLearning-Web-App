@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English To German</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .textarea-container,
+        .output-container {
+            flex: 1;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        textarea {
+            min-width: 100%;
+            min-height: 60vh;
+            max-width: 100%;
+            max-height: 60vh;
+
+            /* Adjust height to accommodate label and button */
+            box-sizing: border-box;
+            border-radius: 10px;
+            margin-top: 2vh;
+        }
+
+        .apiCallButton {
+            width: 100%;
+            min-height: 5vh;
+            max-height: 6vh;
+            font-size: 16px;
+            font-weight: bold;
+            background: aquamarine;
+            border: none;
+            border-radius: 10px;
+            margin-top: 2vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="textarea-container">
+            <div class="row" style="height: 10%;">
+                <h2>English to German Translation</h2>
+            </div>
+            <div class="row" style="height: 90%;">
+                <form id="conversionForm" method="POST">
+                    <label for="text_input">Enter text (only alphabets):</label>
+                    <textarea name="text_input" id="text_input" required></textarea>
+                    <br>
+                    <button type="submit" id="apiCallButton" class="apiCallButton">Make API Call</button>
+                </form>
+            </div>
+        </div>
+        <div class="output-container" id="outputContainer">
+            {% if api_result %}
+            <div class="row" style="height: 10%;">
+                <h2>Result</h2>
+            </div>
+            <div class="row" style="height: 90%;">
+                <p>{{ api_result }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+
+</html>
